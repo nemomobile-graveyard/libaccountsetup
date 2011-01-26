@@ -1,0 +1,26 @@
+#gdb core files
+core.*
+core
+
+gen_*
+moc_*
+.moc
+.obj
+*.o
+Makefile
+*.so
+*.so.*
+
+# vim files
+.*.swp
+*~
+
+#from kdiff3
+*.orig
+
+# build/packaging files
+build-stamp
+builddir/
+configure-stamp
+debian/
+
