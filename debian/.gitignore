@@ -1,0 +1,8 @@
+*.substvars
+*.debhelper
+*.log
+files
+libaccountsetup-dev/
+libaccountsetup0-dbg/
+libaccountsetup0/
+tmp/
