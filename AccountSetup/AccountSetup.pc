@@ -1,0 +1,14 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+serviceplugindir=${libdir}/AccountsUI/
+providerplugindir=${libdir}/AccountsUI/
+
+Name: AccountSetup
+Description: Accounts-UI plugins development
+Version: 0.1
+Requires: accounts-qt
+Libs: -L${libdir} -lAccountSetup
+Cflags: -I${includedir}
+
