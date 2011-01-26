@@ -236,7 +236,7 @@ ProviderPluginProxy::~ProviderPluginProxy()
     delete d;
 }
 
-void ProviderPluginProxy::createAccount(Provider *provider,
+void ProviderPluginProxy::createAccount(Accounts::Provider *provider,
                                         const QString &serviceType)
 {
     Q_D(ProviderPluginProxy);
@@ -251,7 +251,7 @@ void ProviderPluginProxy::createAccount(Provider *provider,
     d->startProcess(provider, 0, serviceType);
 }
 
-void ProviderPluginProxy::editAccount(Account *account,
+void ProviderPluginProxy::editAccount(Accounts::Account *account,
                                       const QString &serviceType)
 {
     Q_D(ProviderPluginProxy);

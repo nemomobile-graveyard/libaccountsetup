@@ -1,0 +1,49 @@
+/*! \page introduction Introduction to the Accounts setup library
+
+\section about About AccountSetup
+
+User accounts are configured by special applications, called "account provider
+plugins", usually developed by the provider of the service being offered.
+
+The AccountSetup library can be used by applications to invoke the execution of
+these plugins with the goal of creating or editing a user account.
+
+It is also used to implement account plugins.
+
+\section terminology Common terminology
+
+Some terms used in these pages:
+
+ - Account
+   - This is a user account on server.
+   - With the same term we also refer to the local entity which represents a
+     remote account.
+ - Provider
+   - The organization which provides the account.
+   - Examples: Nokia, Google, Yahoo.
+ - Service
+   - The implementation of a protocol or application which uses an account.
+   - Example of services provided by Google: GMail, Google-talk, Picasa; by
+     Nokia: Ovi Mail, Ovi Calendar; by Yahoo: Flickr.
+ - Service type
+   - The protocol or application of a service.
+   - Example: e-mail (for GMail, Ovi Mail), sharing (for Picasa, Flickr).
+   - It's a string, defined by the application which uses the service.
+
+\section providerplugins Provider plugins
+
+Provider plugins are responsible for creating and editing of accounts. The
+creation of an account implies creating a record for the account into the
+accounts database (see libaccounts-qt documentation) along with some basic
+information to allow applications to authenticate to the remote server (such as
+the username or credentials ID from the SSO subsystem), and optionally other
+settings common to all services.
+
+The process of creating and editing an account involves handling of user
+credentials which might be bound to a specific security resource token which in
+turn is bound to a unix process; for this reason, creation and editing of
+accounts happens in a different process than the Accounts UI application.
+The provider plugins are not QPlugin or shared objects; instead, they are
+executable binaries.
+
+*/
