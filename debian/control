@@ -5,6 +5,14 @@ Maintainer: Alberto Mardegan <alberto.mardegan@nokia.com>
 Build-Depends: debhelper(>=5), doxygen, libaccounts-qt-dev (>= 0.32), libqt4-dev(>= 4.5)
 Standards-Version: 3.7.2
 
+Package: libaccountsetup-doc
+Architecture: all
+Section: doc
+Priority: optional
+Description: Documentation for the accounts setup library
+ Doxygen-generated HTML documentation for the Accounts setup development
+ library.
+
 Package: libaccountsetup-dev
 Architecture: any
 Section: devel
