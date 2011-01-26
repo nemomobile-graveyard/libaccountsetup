@@ -62,6 +62,10 @@ class ACCOUNTSETUP_EXPORT ProviderPluginProxy: public QObject
     Q_OBJECT
 
 public:
+    /*!
+     * Error codes for plugin execution.
+     * @sa error()
+     */
     enum Error {
         NoError = 0,
         AccountNotFound,
@@ -160,6 +164,10 @@ public:
     QString pluginName();
 
 Q_SIGNALS:
+    /*!
+     * Emitted when the plugin execution has been completed.
+     * @sa error(), accountCreated()
+     */
     void finished();
 
 protected:
