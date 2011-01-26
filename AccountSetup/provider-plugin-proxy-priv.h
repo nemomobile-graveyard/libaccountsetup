@@ -55,7 +55,7 @@ public:
         error(ProviderPluginProxy::NoError),
         setupType(Unset)
     {
-        pluginDirs << QString::fromLatin1("/usr/libexec/AccountSetup");
+        pluginDirs << QString::fromLatin1("/usr/lib/AccountSetup");
     }
     ~ProviderPluginProxyPrivate();
 
