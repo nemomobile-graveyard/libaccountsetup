@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE provider>
+<provider version="1.0" id="NutProvider">
+    <name>Nut provider</name>
+    <description>I'm nuts</description>
+    <icon>some icon name</icon>
+    <plugin>test</plugin>
+</provider>
+

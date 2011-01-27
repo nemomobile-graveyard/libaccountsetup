@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE provider>
+<provider version="1.0" id="MissingPlugin">
+    <name>Missing Plugin</name>
+    <description>No plugin for me. I'm a failure! :-(</description>
+    <icon>some icon name</icon>
+    <plugin>unexisting-plugin</plugin>
+</provider>
+

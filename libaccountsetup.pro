@@ -3,7 +3,7 @@ include(common-vars.pri)
 TEMPLATE = subdirs
 
 CONFIG += ordered
-SUBDIRS += AccountSetup
+SUBDIRS += AccountSetup tests
 
 include(doc/doc.pri)
 

@@ -1,0 +1,20 @@
+<testdefinition version="0.1">
+    <suite name="libaccountsetup-tests">
+	<description />
+	<set name="plugin">
+	    <description>Plugin execution</description>
+	    <case name="libaccountsetup-test-missingPluginTest" type="Functional" level="Feature">
+		<description>Missing plugin test</description>
+		<step>/usr/bin/libaccountsetup-test missingPluginTest</step>
+	    </case>
+	    <case name="libaccountsetup-test-pluginStatusTest" type="Functional" level="Feature">
+		<description>Plugin status test</description>
+		<step>/usr/bin/libaccountsetup-test pluginStatusTest</step>
+	    </case>
+	    <environments>
+		<scratchbox>true</scratchbox>
+		<hardware>true</hardware>
+	    </environments>
+	</set>
+    </suite>
+</testdefinition>
