@@ -39,3 +39,11 @@ Depends: libaccountsetup0 (= ${binary:Version})
 Description: Debug symbols for libaccountsetup
  Debug symbols for libaccountsetup.
 
+Package: libaccountsetup-tests
+Architecture: any
+Depends: ${shlibs:Depends}, ci-testing
+XB-Maemo-CI-Packages: libaccountsetup0
+XB-Maemo-CI-Stage: staging
+Description: Tests for libaccountsetup
+ Tests for libaccountsetup.
+
