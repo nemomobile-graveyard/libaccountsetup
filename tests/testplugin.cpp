@@ -32,7 +32,7 @@ using namespace AccountSetup;
 
 int main(int argc, char **argv)
 {
-    QCoreApplication *app = new QCoreApplication(argc, argv);
+    QCoreApplication app(argc, argv);
 
     ProviderPluginProcess *plugin = new ProviderPluginProcess();
 
