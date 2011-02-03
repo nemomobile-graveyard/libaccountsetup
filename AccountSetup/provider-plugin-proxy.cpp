@@ -340,13 +340,9 @@ bool ProviderPluginProxy::killRunningPlugin()
 
     d->process->disconnect();
     d->process->close();
+    delete d->process;
+    d->process = 0;
 
-    bool terminated = d->process->waitForFinished();
-    if (terminated) {
-        delete d->process;
-        d->process = 0;
-    }
-
-    return terminated;
+    return true;
 }
 
