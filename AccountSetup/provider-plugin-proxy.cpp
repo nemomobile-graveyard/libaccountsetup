@@ -331,6 +331,12 @@ void ProviderPluginProxy::setAdditionalParameters(const QStringList &parameters)
     d->additionalParameters = parameters;
 }
 
+QStringList ProviderPluginProxy::additionalParameters() const
+{
+    Q_D(const ProviderPluginProxy);
+    return d->additionalParameters;
+}
+
 bool ProviderPluginProxy::killRunningPlugin()
 {
     Q_D(ProviderPluginProxy);

@@ -182,6 +182,11 @@ protected:
     void setAdditionalParameters(const QStringList &parameters);
 
     /*!
+     * Gets the list of additional parameters passed to the plugin process.
+     */
+    QStringList additionalParameters() const;
+
+    /*!
      * Kills the plugin being executed. This will probably result in data loss
      * and other resource waste, so it's strongly recommended not to ever call
      * this method.
