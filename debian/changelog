@@ -1,3 +1,9 @@
+libaccountsetup (0.2-1) unstable; urgency=low
+
+  * Fixes: NB#223780 - ServiceProvider list view and accounts view are not responding after trying to create 2nd MFE account
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Mon, 07 Feb 2011 15:00:38 +0530
+
 libaccountsetup (0.1-2) unstable; urgency=low
 
   * Depend on pkg-config.
