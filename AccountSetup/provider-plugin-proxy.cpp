@@ -61,7 +61,7 @@ void ProviderPluginProxyPrivate::startProcess(Provider *provider,
         emit q->finished();
         return;
     }
-
+    providerName = provider->name();
     pid_t pid = getpid();
     socketName = provider->name() + QString::number(pid);
 
@@ -323,6 +323,14 @@ QString ProviderPluginProxy::pluginName()
 
     Q_D(ProviderPluginProxy);
     return d->pluginName;
+}
+
+QString ProviderPluginProxy::providerName()
+{
+    if (!isPluginRunning())
+        return QString();
+    Q_D(ProviderPluginProxy);
+    return d->providerName;
 }
 
 void ProviderPluginProxy::setAdditionalParameters(const QStringList &parameters)

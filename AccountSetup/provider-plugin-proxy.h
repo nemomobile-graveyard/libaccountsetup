@@ -163,6 +163,11 @@ public:
      */
     QString pluginName();
 
+    /*!
+     * @return the name of the povider of the plugin
+     */
+    QString providerName();
+
 Q_SIGNALS:
     /*!
      * Emitted when the plugin execution has been completed.
