@@ -1,3 +1,9 @@
+libaccountsetup (0.3-1) unstable; urgency=low
+
+  * Adding fetching of plugin's provider name
+
+ -- Smita Srivastava <smita.srivastava@teleca.com>  Fri, 18 Feb 2011 11:29:38 +0300
+
 libaccountsetup (0.2-1) unstable; urgency=low
 
   * Fixes: NB#223780 - ServiceProvider list view and accounts view are not responding after trying to create 2nd MFE account
