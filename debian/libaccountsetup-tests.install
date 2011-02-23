@@ -1,0 +1,4 @@
+usr/bin/libaccountsetup-test
+usr/lib/AccountSetup/testplugin
+usr/share/libaccountsetup-tests/*
+

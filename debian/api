@@ -1,0 +1,6 @@
+interface: libAccountSetup
+type: library
+scope: Platform
+state: stable
+libs-pkg: libaccountsetup0
+dev-pkg: libaccountsetup-dev

@@ -1,0 +1,3 @@
+usr/include/AccountSetup/*
+usr/lib/libAccountSetup*.so
+usr/lib/pkgconfig/AccountSetup.pc

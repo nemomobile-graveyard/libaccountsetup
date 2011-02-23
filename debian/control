@@ -1,0 +1,49 @@
+Source: libaccountsetup
+Section: comm
+Priority: optional
+Maintainer: Alberto Mardegan <alberto.mardegan@nokia.com>
+Build-Depends: debhelper(>=5), doxygen, pkg-config, libaccounts-qt-dev (>= 0.32), libqt4-dev(>= 4.5)
+Standards-Version: 3.7.2
+
+Package: libaccountsetup-doc
+Architecture: all
+Section: doc
+Priority: optional
+Description: Documentation for the accounts setup library
+ Doxygen-generated HTML documentation for the Accounts setup development
+ library.
+
+Package: libaccountsetup-dev
+Architecture: any
+Section: devel
+Priority: optional
+Depends: pkg-config (>= 0.22), libaccountsetup0 (= ${binary:Version}), libaccounts-qt-dev
+Description: Accounts setup development headers
+ Development package for applications which need to invoke MeeGo account
+ plugins, and for developing such plugins.
+
+Package: libaccountsetup0
+Architecture: any
+Section: libs
+Priority: optional
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Accounts setup development library
+ Library for applications which need to invoke MeeGo account plugins, and for
+ developing such plugins.
+
+Package: libaccountsetup0-dbg
+Architecture: any
+Section: devel
+Priority: optional
+Depends: libaccountsetup0 (= ${binary:Version})
+Description: Debug symbols for libaccountsetup
+ Debug symbols for libaccountsetup.
+
+Package: libaccountsetup-tests
+Architecture: any
+Depends: ${shlibs:Depends}, ci-testing
+XB-Maemo-CI-Packages: libaccountsetup0
+XB-Maemo-CI-Stage: staging
+Description: Tests for libaccountsetup
+ Tests for libaccountsetup.
+

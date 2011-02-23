@@ -1,0 +1,23 @@
+libaccountsetup (0.3-1) unstable; urgency=low
+
+  * Adding fetching of plugin's provider name
+
+ -- Smita Srivastava <smita.srivastava@teleca.com>  Fri, 18 Feb 2011 11:29:38 +0300
+
+libaccountsetup (0.2-1) unstable; urgency=low
+
+  * Fixes: NB#223780 - ServiceProvider list view and accounts view are not responding after trying to create 2nd MFE account
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Mon, 07 Feb 2011 15:00:38 +0530
+
+libaccountsetup (0.1-2) unstable; urgency=low
+
+  * Depend on pkg-config.
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Thu, 27 Jan 2011 15:02:29 +0200
+
+libaccountsetup (0.1-1) unstable; urgency=low
+
+  * Initial release.
+
+ -- Alberto Mardegan <alberto.mardegan@nokia.com>  Wed, 26 Jan 2011 10:35:18 +0200
