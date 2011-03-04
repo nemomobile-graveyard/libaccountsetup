@@ -38,8 +38,8 @@ const int cancelId = -1;
 ProviderPluginProcessPrivate::ProviderPluginProcessPrivate(ProviderPluginProcess *parent):
     q_ptr(parent),
     setupType(Unset),
-    goToAccountsPage(false),
-    windowId(0)
+    windowId(0),
+    goToAccountsPage(false)
 {
     account = 0;
     manager = new Accounts::Manager(this);
@@ -117,7 +117,7 @@ void ProviderPluginProcessPrivate::printAccountId()
         if (!goToAccountsPage)
             ba = QString::number(account->id()).toAscii();
         else
-            ba = cancelId;
+            ba = QString::number(cancelId).toAscii();
         QFile output;
         output.open(STDOUT_FILENO, QIODevice::WriteOnly);
         output.write(ba.constData());
@@ -179,7 +179,7 @@ void ProviderPluginProcess::setReturnToAccountsList(bool value)
     Q_D(ProviderPluginProcess);
     /* goToAccountsPage is only true when plugin is stopped in between without
       creating the account */
-    d->goToAccountsPage = true;
+    d->goToAccountsPage = value;
     quit();
 
 }
