@@ -90,6 +90,11 @@ public:
      */
     WId parentWindowId() const;
 
+    /*!
+     * Sets the variable to go to accountsPage, when plugin exits.
+     */
+    void setReturnToAccountsList(bool value);
+
 public Q_SLOTS:
     /*!
      * Clean termination of the plugin process.
