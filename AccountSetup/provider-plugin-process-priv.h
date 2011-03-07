@@ -58,6 +58,7 @@ private:
     QString serviceType;
     bool returnToApp;
     QString socketName;
+    bool goToAccountsPage;
 };
 
 } // namespace

@@ -33,11 +33,13 @@
 using namespace AccountSetup;
 
 static ProviderPluginProcess *plugin_instance = 0;
+const int cancelId = -1;
 
 ProviderPluginProcessPrivate::ProviderPluginProcessPrivate(ProviderPluginProcess *parent):
     q_ptr(parent),
     setupType(Unset),
-    windowId(0)
+    windowId(0),
+    goToAccountsPage(false)
 {
     account = 0;
     manager = new Accounts::Manager(this);
@@ -103,12 +105,19 @@ void ProviderPluginProcessPrivate::printAccountId()
 
         QByteArray ba;
         QDataStream stream(&ba, QIODevice::WriteOnly);
-        stream << account->id();
+        if (!goToAccountsPage)
+            stream << account->id();
+        else
+            stream << cancelId;
         socket->write(ba);
         socket->flush();
         socket->close();
     } else {
-        QByteArray ba = QString::number(account->id()).toAscii();
+        QByteArray ba;
+        if (!goToAccountsPage)
+            ba = QString::number(account->id()).toAscii();
+        else
+            ba = QString::number(cancelId).toAscii();
         QFile output;
         output.open(STDOUT_FILENO, QIODevice::WriteOnly);
         output.write(ba.constData());
@@ -163,6 +172,16 @@ WId ProviderPluginProcess::parentWindowId() const
 {
     Q_D(const ProviderPluginProcess);
     return d->windowId;
+}
+
+void ProviderPluginProcess::setReturnToAccountsList(bool value)
+{
+    Q_D(ProviderPluginProcess);
+    /* goToAccountsPage is only true when plugin is stopped in between without
+      creating the account */
+    d->goToAccountsPage = value;
+    quit();
+
 }
 
 void ProviderPluginProcess::quit()

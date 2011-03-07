@@ -1,3 +1,15 @@
+libaccountsetup (0.4-2) unstable; urgency=low
+
+  * Fixes: NB# 210224 - View goes back to Login view instead of Accounts view after selecting Cancel button of service selection view
+
+ -- Smita Srivastava <smita.srivastava@teleca.com>  Fri, 04 Mar 2011 10:48:23 +0200
+
+libaccountsetup (0.4-1) unstable; urgency=low
+
+  * Adresses: NB#226348 - Accounts view -Add more accounts and Service selection view - Done / Cancel buttons are not according to layout guide
+
+ -- Smita Srivastava <smita.srivastava@teleca.com>  Fri, 04 Mar 2011 10:24:14 +0200
+
 libaccountsetup (0.3-1) unstable; urgency=low
 
   * Adding fetching of plugin's provider name
