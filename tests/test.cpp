@@ -74,8 +74,8 @@ void Test::missingPluginTest()
 {
     Manager *manager = new Manager();
 
-    Provider *provider = manager->provider("MissingPlugin");
-    QVERIFY(provider != NULL);
+    Provider *provider = manager->provider("SomePlugin");
+    QVERIFY(provider == NULL);
 
     ProviderPluginProxy *proxy = new ProviderPluginProxy(manager);
     QSignalSpy spy(proxy, SIGNAL(finished()));
