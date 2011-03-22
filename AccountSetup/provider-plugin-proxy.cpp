@@ -113,21 +113,28 @@ bool ProviderPluginProxyPrivate::findPlugin(Provider *provider,
                                             QString &pluginFileName)
 {
     static const char pluginNamePattern[] = "%1plugin";
+    bool pluginTagExists = true;
 
     QDomElement root(provider->domDocument().documentElement());
     QString pluginName(root.
                        firstChildElement(QString::fromLatin1("plugin")).
                        text());
-    if (pluginName.isEmpty())
+    if (pluginName.isEmpty()) {
         pluginName = provider->name();
+        pluginTagExists = false;
+    }
 
-    /* If a plugin for the specified name cannot be found, fallback to
-     * "genericplugin"
-     */
     QStringList pluginFileNames;
     pluginFileNames << QString::fromLatin1(pluginNamePattern).arg(pluginName);
-    pluginFileNames << QString::fromLatin1(pluginNamePattern).
-        arg(QLatin1String("generic"));
+
+    /* If a plugin for the specified name cannot be found and
+     * the plugin is not specified in the provider file, fallback to
+     * "genericplugin"
+     */
+    if (!pluginTagExists) {
+        pluginFileNames << QString::fromLatin1(pluginNamePattern).
+            arg(QLatin1String("generic"));
+    }
 
     foreach (QString name, pluginFileNames) {
         foreach (QString pluginDir, pluginDirs) {
