@@ -168,6 +168,11 @@ public:
      */
     QString providerName();
 
+    /*!
+     * @return the extra data that the plugin returned when terminating.
+     */
+    QVariant exitData();
+
 Q_SIGNALS:
     /*!
      * Emitted when the plugin execution has been completed.

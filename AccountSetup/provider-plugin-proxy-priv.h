@@ -54,7 +54,8 @@ public:
         createdAccountId(0),
         error(ProviderPluginProxy::NoError),
         setupType(Unset),
-        providerName()
+        providerName(),
+        exitData()
     {
         pluginDirs << QString::fromLatin1("/usr/lib/AccountSetup");
     }
@@ -85,6 +86,7 @@ private:
     QByteArray pluginOutput;
     SetupType setupType;
     QString providerName;
+    QVariant exitData;
 };
 
 }; // namespace

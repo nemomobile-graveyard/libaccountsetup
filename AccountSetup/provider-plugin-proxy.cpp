@@ -220,7 +220,8 @@ void ProviderPluginProxyPrivate::onFinished(int exitCode,
     QString value;
     if (!pluginOutput.isEmpty()) {
         QDataStream stream(pluginOutput);
-        stream >> createdAccountId;
+        stream.device()->seek(0);
+        stream >> createdAccountId >> exitData;
     }
 
     if (process) {
@@ -365,5 +366,11 @@ bool ProviderPluginProxy::killRunningPlugin()
     d->process = 0;
 
     return true;
+}
+
+QVariant ProviderPluginProxy::exitData()
+{
+    Q_D(ProviderPluginProxy);
+    return d->exitData;
 }
 
