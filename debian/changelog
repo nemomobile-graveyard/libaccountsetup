@@ -1,3 +1,9 @@
+libaccountsetup (0.6-1) unstable; urgency=low
+
+  * Addresses: NB#239006 - Accounts-ui is not closing after configuring account from other application
+
+ -- Smita Srivastava <smita.srivastava@teleca.com>  Thu, 14 Apr 2011 12:11:06 +0300
+
 libaccountsetup (0.5) unstable; urgency=low
 
   * Fixes: NB#  236803 - libaccountsetup-tests - CITA cases FAILS
