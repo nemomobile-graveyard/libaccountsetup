@@ -44,7 +44,7 @@ public:
     ProviderPluginProcessPrivate(ProviderPluginProcess *parent);
     ~ProviderPluginProcessPrivate();
 
-    void printAccountId();
+    void sendResultToCaller();
 
 public Q_SLOTS:
     void onSocketError(QLocalSocket::LocalSocketError errorStatus);
@@ -59,6 +59,7 @@ private:
     bool returnToApp;
     QString socketName;
     bool goToAccountsPage;
+    QVariant exitData;
 };
 
 } // namespace

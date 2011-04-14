@@ -29,6 +29,7 @@
 #include <QDebug>
 #include <QFile>
 #include <QLocalSocket>
+#include <QVariant>
 
 using namespace AccountSetup;
 
@@ -39,7 +40,8 @@ ProviderPluginProcessPrivate::ProviderPluginProcessPrivate(ProviderPluginProcess
     q_ptr(parent),
     setupType(Unset),
     windowId(0),
-    goToAccountsPage(false)
+    goToAccountsPage(false),
+    exitData()
 {
     account = 0;
     manager = new Accounts::Manager(this);
@@ -95,7 +97,7 @@ ProviderPluginProcessPrivate::~ProviderPluginProcessPrivate()
 {
 }
 
-void ProviderPluginProcessPrivate::printAccountId()
+void ProviderPluginProcessPrivate::sendResultToCaller()
 {
     if (!socketName.isEmpty()) {
         QLocalSocket *socket = new QLocalSocket();
@@ -109,6 +111,7 @@ void ProviderPluginProcessPrivate::printAccountId()
             stream << account->id();
         else
             stream << cancelId;
+        stream << exitData;
         socket->write(ba);
         socket->flush();
         socket->close();
@@ -184,12 +187,16 @@ void ProviderPluginProcess::setReturnToAccountsList(bool value)
 
 }
 
+void ProviderPluginProcess::setExitData(const QVariant &data)
+{
+    Q_D(ProviderPluginProcess);
+    d->exitData = data;
+}
+
 void ProviderPluginProcess::quit()
 {
     Q_D(ProviderPluginProcess);
-
-    d->printAccountId();
-
+    d->sendResultToCaller();
     QCoreApplication::exit(0);
 }
 
