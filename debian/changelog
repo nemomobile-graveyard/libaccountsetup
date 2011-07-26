@@ -1,3 +1,9 @@
+libaccountsetup (1.0-1) unstable; urgency=low
+
+  * UNRELEASED
+
+ -- Tomi Suviola <tomi.suviola@nokia.com>  Tue, 26 Jul 2011 15:11:06 +0300
+
 libaccountsetup (0.6-1) unstable; urgency=low
 
   * Addresses: NB#239006 - Accounts-ui is not closing after configuring account from other application
