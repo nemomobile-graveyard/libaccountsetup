@@ -14,7 +14,8 @@ PROJECT_NAME = libAccountSetup
 # Project version
 # remember to update debian/* files if you changes this
 #-----------------------------------------------------------------------------
-PROJECT_VERSION = 0.6
+PROJECT_VERSION = 1.0
+
 
 # End of File
 
