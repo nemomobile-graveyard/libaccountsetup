@@ -60,6 +60,8 @@ private:
     QString socketName;
     bool goToAccountsPage;
     QVariant exitData;
+    bool editExistingAccount;
+    Accounts::AccountId existingAccountId;
 };
 
 } // namespace

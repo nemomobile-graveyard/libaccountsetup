@@ -41,7 +41,9 @@ ProviderPluginProcessPrivate::ProviderPluginProcessPrivate(ProviderPluginProcess
     setupType(Unset),
     windowId(0),
     goToAccountsPage(false),
-    exitData()
+    exitData(),
+    editExistingAccount(false),
+    existingAccountId(0)
 {
     account = 0;
     manager = new Accounts::Manager(this);
@@ -107,20 +109,27 @@ void ProviderPluginProcessPrivate::sendResultToCaller()
 
         QByteArray ba;
         QDataStream stream(&ba, QIODevice::WriteOnly);
-        if (!goToAccountsPage)
+
+        if (editExistingAccount)
+            stream << existingAccountId;
+        else if (!goToAccountsPage)
             stream << account->id();
         else
             stream << cancelId;
+
         stream << exitData;
         socket->write(ba);
         socket->flush();
         socket->close();
     } else {
         QByteArray ba;
-        if (!goToAccountsPage)
+        if (editExistingAccount)
+            ba = QString::number(existingAccountId).toAscii();
+        else if (!goToAccountsPage)
             ba = QString::number(account->id()).toAscii();
         else
             ba = QString::number(cancelId).toAscii();
+
         QFile output;
         output.open(STDOUT_FILENO, QIODevice::WriteOnly);
         output.write(ba.constData());
@@ -191,6 +200,13 @@ void ProviderPluginProcess::setExitData(const QVariant &data)
 {
     Q_D(ProviderPluginProcess);
     d->exitData = data;
+}
+
+void ProviderPluginProcess::setEditExistingAccount(Accounts::AccountId accountId)
+{
+    Q_D(ProviderPluginProcess);
+    d->editExistingAccount = true;
+    d->existingAccountId = accountId;
 }
 
 void ProviderPluginProcess::quit()
