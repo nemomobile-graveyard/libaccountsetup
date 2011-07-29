@@ -1,6 +1,7 @@
 libaccountsetup (1.0-1) unstable; urgency=low
 
   * UNRELEASED
+  * Fixes: NB#249627 - Accounts&SSO; After creation of duplicate account button §qtn_comm_command_continue§ doesn't move to edit setting view.
 
  -- Tomi Suviola <tomi.suviola@nokia.com>  Tue, 26 Jul 2011 15:11:06 +0300
 
