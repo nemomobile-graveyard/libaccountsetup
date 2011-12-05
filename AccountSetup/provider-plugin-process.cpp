@@ -105,7 +105,9 @@ void ProviderPluginProcessPrivate::sendResultToCaller()
         QLocalSocket *socket = new QLocalSocket();
         connect(socket, SIGNAL(error(QLocalSocket::LocalSocketError)),
                 this, SLOT(onSocketError(QLocalSocket::LocalSocketError)));
+
         socket->connectToServer(socketName);
+        socket->waitForConnected();
 
         QByteArray ba;
         QDataStream stream(&ba, QIODevice::WriteOnly);
@@ -120,7 +122,9 @@ void ProviderPluginProcessPrivate::sendResultToCaller()
         stream << exitData;
         socket->write(ba);
         socket->flush();
+
         socket->close();
+        delete socket;
     } else {
         QByteArray ba;
         if (editExistingAccount)
