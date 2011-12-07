@@ -153,7 +153,7 @@ bool ProviderPluginProxyPrivate::findPlugin(Provider *provider,
 
 void ProviderPluginProxyPrivate::setCommunicationChannel()
 {
-    QLocalServer *server = new QLocalServer(this);
+    QLocalServer *server = new QLocalServer(process);
     QLocalServer::removeServer(socketName);
     if (!server->listen(socketName))
         qWarning() << "Server not up";
@@ -183,7 +183,7 @@ void ProviderPluginProxyPrivate::onNewConnection()
 }
 
 
-void Pr oviderPluginProxyPrivate::onReadStandardError()
+void ProviderPluginProxyPrivate::onReadStandardError()
 {
     qDebug() << QString::fromLatin1(process->readAllStandardError());
 }

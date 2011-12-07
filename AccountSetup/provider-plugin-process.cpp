@@ -123,7 +123,10 @@ void ProviderPluginProcessPrivate::sendResultToCaller()
         socket->write(ba);
         socket->flush();
 
-        socket->close();
+        socket->disconnectFromServer();
+        socket->waitForDisconnected();
+
+        socket->abort();
         delete socket;
     } else {
         QByteArray ba;
