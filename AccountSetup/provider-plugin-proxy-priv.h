@@ -61,9 +61,9 @@ public:
     }
     ~ProviderPluginProxyPrivate();
 
-    void startProcess(Provider *provider, AccountId accountId,
+    void startProcess(Provider provider, AccountId accountId,
                       const QString &serviceType);
-    bool findPlugin(Provider *provider, QString &pluginPath,
+    bool findPlugin(Provider provider, QString &pluginPath,
                     QString &pluginFileName);
 
 private Q_SLOTS:

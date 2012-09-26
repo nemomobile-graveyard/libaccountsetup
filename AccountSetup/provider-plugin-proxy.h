@@ -86,7 +86,7 @@ public:
      * @param serviceType The main service type the user is interested in, or
      * empty string.
      */
-    void createAccount(Accounts::Provider *provider,
+    void createAccount(Accounts::Provider provider,
                        const QString &serviceType);
 
     /*!

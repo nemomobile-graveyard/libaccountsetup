@@ -43,7 +43,7 @@ ProviderPluginProxyPrivate::~ProviderPluginProxyPrivate()
     }
 }
 
-void ProviderPluginProxyPrivate::startProcess(Provider *provider,
+void ProviderPluginProxyPrivate::startProcess(Provider provider,
                                               AccountId accountId,
                                               const QString &serviceType)
 {
@@ -61,9 +61,9 @@ void ProviderPluginProxyPrivate::startProcess(Provider *provider,
         emit q->finished();
         return;
     }
-    providerName = provider->name();
+    providerName = provider.name();
     pid_t pid = getpid();
-    socketName = provider->name() + QString::number(pid);
+    socketName = provider.name() + QString::number(pid);
 
     QStringList arguments;
     arguments << QLatin1String("--socketName") << socketName;
@@ -77,7 +77,7 @@ void ProviderPluginProxyPrivate::startProcess(Provider *provider,
         arguments << QLatin1String("--edit") << QString::number(accountId);
         setupType = EditExisting;
     } else {
-        arguments << QLatin1String("--create") << provider->name();
+        arguments << QLatin1String("--create") << provider.name();
         setupType = CreateNew;
     }
 
@@ -108,19 +108,19 @@ void ProviderPluginProxyPrivate::startProcess(Provider *provider,
     process->start(processName, arguments);
 }
 
-bool ProviderPluginProxyPrivate::findPlugin(Provider *provider,
+bool ProviderPluginProxyPrivate::findPlugin(Provider provider,
                                             QString &pluginPath,
                                             QString &pluginFileName)
 {
     static const char pluginNamePattern[] = "%1plugin";
     bool pluginTagExists = true;
 
-    QDomElement root(provider->domDocument().documentElement());
+    QDomElement root(provider.domDocument().documentElement());
     QString pluginName(root.
                        firstChildElement(QString::fromLatin1("plugin")).
                        text());
     if (pluginName.isEmpty()) {
-        pluginName = provider->name();
+        pluginName = provider.name();
         pluginTagExists = false;
     }
 
@@ -244,12 +244,12 @@ ProviderPluginProxy::~ProviderPluginProxy()
     delete d;
 }
 
-void ProviderPluginProxy::createAccount(Accounts::Provider *provider,
+void ProviderPluginProxy::createAccount(Accounts::Provider provider,
                                         const QString &serviceType)
 {
     Q_D(ProviderPluginProxy);
 
-    if (!provider) {
+    if (!provider.isValid()) {
         qCritical() << " NULL pointer to provider";
         d->error = ProviderPluginProxy::PluginNotFound;
         emit finished();
@@ -272,7 +272,7 @@ void ProviderPluginProxy::editAccount(Accounts::Account *account,
     }
 
     Manager *manager = account->manager();
-    Provider *provider = manager->provider(account->providerName());
+    Provider provider = manager->provider(account->providerName());
     d->startProcess(provider, account->id(), serviceType);
 }
 

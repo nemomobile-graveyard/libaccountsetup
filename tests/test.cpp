@@ -74,8 +74,8 @@ void Test::missingPluginTest()
 {
     Manager *manager = new Manager();
 
-    Provider *provider = manager->provider("MissingPlugin");
-    QVERIFY(provider != NULL);
+    Provider provider = manager->provider("MissingPlugin");
+    QVERIFY(provider.isValid());
 
     ProviderPluginProxy *proxy = new ProviderPluginProxy(manager);
     QSignalSpy spy(proxy, SIGNAL(finished()));
@@ -101,8 +101,8 @@ void Test::pluginStatusTest()
 {
     Manager *manager = new Manager();
 
-    Provider *provider = manager->provider("NutProvider");
-    QVERIFY(provider != NULL);
+    Provider provider = manager->provider("NutProvider");
+    QVERIFY(provider.isValid());
 
     ProviderPluginProxyTest *proxy = new ProviderPluginProxyTest(manager);
     QObject::connect(proxy, SIGNAL(finished()),
